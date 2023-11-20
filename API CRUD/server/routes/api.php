@@ -26,12 +26,11 @@ Route::middleware('cors')->group(function () {
 
     function missing()
     {
-
         return fn () => response()->json([
             "message" => "Not Found"
         ]);
     }
-    Route::get('/GetOne/{todo}', [TodoController::class, 'show'])->missing(missing());
-    Route::patch('/Update/{todo}', [TodoController::class, 'update'])->missing(missing());
-    Route::delete('/Delete/{todo}', [TodoController::class, 'delete'])->missing(missing());
+    Route::get('GetOne/{todo}', [TodoController::class, 'show'])->missing(missing());
+    Route::patch('Update/{todo}', [TodoController::class, 'update'])->missing(missing());
+    Route::delete('Delete/{todo}', [TodoController::class, 'delete'])->missing(missing());
 });
