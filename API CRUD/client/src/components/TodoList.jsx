@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 function TodoList() {
   const {
     data: { todo },
+    deleteTodo
   } = useTodo();
 
   if (!todo) {
@@ -27,9 +28,9 @@ function TodoList() {
             <Link to={"/edit/" + t.id} className="bg-yellow-400 text-white p-2 rounded-md">
               <FaPen  />
             </Link>
-            <Link to={"/delete/" + t.id} className="bg-red-400 text-white p-2 rounded-md">
+            <button className="bg-red-400 text-white p-2 rounded-md" onClick={deleteTodo.bind(this,t.id)}>
               <FaTrashAlt  />
-            </Link>
+            </button>
           </div>
         </div>
       ))}
