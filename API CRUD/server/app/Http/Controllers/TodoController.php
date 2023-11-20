@@ -13,7 +13,7 @@ class TodoController extends Controller
 {
     //
     function index():JsonResponse {
-        $todos = Todo::paginate(10);
+        $todos = Todo::latest()->paginate(10);
         return response()->json([
             "todo" => new TodoResource($todos)
         ]);

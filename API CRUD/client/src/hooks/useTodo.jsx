@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { backendUrl } from "../utils/backendUrl";
 import { toast } from "react-toastify";
 
-function useTodo(id = null) {
+function useTodo() {
   const [data, setData] = useState({});
   const controller = new AbortController();
-  let url;
-  if (id) {
-    url = backendUrl("GetOne") + id;
-  } else {
-    url = backendUrl("GetAll");
-  }
+  
+    let url = backendUrl("GetAll");
+  
 
   const fetchData = async () => {
     try {
