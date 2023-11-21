@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 
 function useTodo() {
   const [data, setData] = useState({});
+  const [page, setPage] = useState(1);
   const controller = new AbortController();
-  
-    let url = backendUrl("GetAll");
-  
+
+  let url = backendUrl("GetAll?page=" + page);
 
   const fetchData = async () => {
     try {
@@ -18,9 +18,11 @@ function useTodo() {
       console.log({ err });
     }
   };
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
+
 
   async function deleteTodo(id) {
     try {
@@ -36,7 +38,26 @@ function useTodo() {
     }
   }
 
-  return { data, deleteTodo };
+  function nextPage() {
+    if (data?.todo.next_page_url) {
+      setPage((page) => page + 1);
+    }
+  }
+  function prevPage() {
+    if (data?.todo.prev_page_url) {
+      setPage((page) => page - 1);
+    }
+  }
+
+  return {
+    data,
+    deleteTodo,
+    nextPage,
+    prevPage,
+    currentPage:data?.todo?.current_page || 1,
+    next_page_url: data?.todo?.next_page_url,
+    prev_page_url: data?.todo?.prev_page_url,
+  };
 }
 
 export default useTodo;
