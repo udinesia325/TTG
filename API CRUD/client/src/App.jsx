@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 import TodoAdd from "./components/TodoAdd";
 import TodoDetail from "./components/TodoDetail";
 import LoginContextProvider from "./context/LoginContextProvider";
+import TodoEdit from "./components/TodoEdit";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<TodoList />} />
           <Route path="/add" element={<TodoAdd />} />
           <Route path="/show/:id" element={<TodoDetail />} />
+          <Route path="/edit/:id" element={<TodoEdit />} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
