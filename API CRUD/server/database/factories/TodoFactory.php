@@ -18,7 +18,7 @@ class TodoFactory extends Factory
     {
         return [
             'title' => fake()->sentence(1),
-            'description' => fake()->sentence(3),
+            'description' => fake()->realText(),
         ];
     }
 }

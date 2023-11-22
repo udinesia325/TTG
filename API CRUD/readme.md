@@ -28,6 +28,10 @@ DB_PASSWORD=
 ```sh
 $ php artisan migrate:fresh --seed
 ```
+- jika ingin melakukan seeding data Todo jalankan perintah
+```sh
+$ php artisan db:seed --class=TodoSeeder
+```
 - username dan password untuk login
 ```sh
 name = admin
