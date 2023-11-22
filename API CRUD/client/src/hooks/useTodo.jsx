@@ -30,7 +30,7 @@ function useTodo() {
       await fetch(backendUrl("Delete/") + id, {
         method: "DELETE",
       });
-      setData({ ...data, todo: { data: filteredTodo } });
+      setData({ ...data, todo:  {...data.todo, data: filteredTodo } });
       toast.success("Berhasil dihapus");
     } catch (err) {
       toast.error("Gagal Dihapus");
